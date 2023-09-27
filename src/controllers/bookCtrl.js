@@ -11,7 +11,7 @@ const getAllBooks = async (req, res) => {
 const getBookById = async (req, res) => {
     const {id} = req.params;
     try {
-        const book = await Book.findById(id);
+        const book = await Book.findById(id).populate("author");
         res.json(book);
     } catch (error) {
         throw new Error(error);
